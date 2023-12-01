@@ -11,7 +11,7 @@ import {
 export default function NavBar() {
   return (
     <NavBarStyled>
-      <Logo>
+      <Logo to="/">
         Snow
         <Icon />
       </Logo>

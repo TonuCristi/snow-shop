@@ -1,36 +1,16 @@
-import { DataContext } from "../../App.js";
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { ProductsContext } from "../../contexts/ProductsContext.js";
 
 import Product from "./Product";
 import Loader from "../Loader/Loader.js";
 import Error from "../ErrorMessage/Error.js";
 import { Container, ProductsSectionStyled } from "./ProductsSectionstyled";
 
-// const filters = [
-//   { inStock: "In stock", promotion: "Promotion", resealed: "Resealed" },
-//   {
-//     christmasTree: "Christmas tree",
-//     socks: "Socks",
-//     candles: "Candles",
-//     lights: "Lights",
-//   },
-//   {
-//     under100: "Under 100",
-//     from100To200: "100 - 200",
-//     from200To300: "200 - 300",
-//     from300To400: "300 - 400",
-//     from400To500: "400 - 500",
-//     over500: "Over 500",
-//   },
-// ];
-
 export default function ProductsSection() {
   const [searchParams] = useSearchParams();
-  const { data, status } = useContext(DataContext);
+  const { data, status } = useContext(ProductsContext);
   const [filterData, setFilterData] = useState([]);
-
-  // console.log(filteredProducts);
 
   useEffect(() => {
     const filtersNames = [];
@@ -53,7 +33,29 @@ export default function ProductsSection() {
 
       filteredData.forEach((prod) => {
         all.forEach((filt) => {
-          if (
+          // Filter for price
+          if (type === "price") {
+            const [from, to] = filt
+              .toLowerCase()
+              .split("from")
+              .join("")
+              .split("to");
+
+            if (
+              filt.includes("under") &&
+              +filt.toLowerCase().split("under").join("") > prod.price
+            ) {
+              tempArr.push(prod);
+            } else if (
+              filt.includes("over") &&
+              +filt.toLowerCase().split("over").join("") < prod.price
+            ) {
+              tempArr.push(prod);
+            } else if (prod.price >= +from && prod.price <= +to) {
+              tempArr.push(prod);
+            }
+            // Filter for disponibility, category
+          } else if (
             prod[type].split(" ").join("").toLowerCase() === filt.toLowerCase()
           ) {
             tempArr.push(prod);
@@ -70,10 +72,6 @@ export default function ProductsSection() {
         doFilter(type, all);
       });
     }
-
-    console.log(filteredData);
-
-    // Create the price filter
 
     setFilterData(filteredData);
   }, [searchParams, data]);

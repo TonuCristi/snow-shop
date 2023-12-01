@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DataContext } from "../../App";
+import { ProductsContext } from "../../contexts/ProductsContext";
 
 import {
   LatestProductsSectionStyled,
@@ -11,7 +11,7 @@ import Loader from "../Loader/Loader";
 import Error from "../ErrorMessage/Error";
 
 export default function LatestProductsSection() {
-  const { data, status } = useContext(DataContext);
+  const { data, status } = useContext(ProductsContext);
   const dataLength = data.length;
   const latestData = data
     .slice(0, dataLength)
