@@ -8,8 +8,6 @@ import ProductsPage from "./pages/ProductsPage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 
-// export const DataContext = createContext(null);
-
 const router = createBrowserRouter([
   {
     path: "/",
