@@ -13,7 +13,7 @@ export default function Product({ product }) {
 
   return (
     <ProductStyled>
-      <Link to={`/product/${id}`}>
+      <Link to={`${id}`}>
         <Image src="../imgs/christmas-tree.jpg" />
       </Link>
       <Info>

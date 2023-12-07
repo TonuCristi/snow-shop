@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   AddToCartBtn,
   Disponibility,
@@ -11,7 +12,7 @@ import {
 } from "./ProductsSectionstyled";
 
 export default function Product({ product }) {
-  const { title, price, stock, promotion, resealed, type } = product;
+  const { id, title, price, stock, promotion, resealed, type } = product;
 
   function disponibilityCheck(stock, resealed) {
     if (!stock) return "No stock";
@@ -21,7 +22,9 @@ export default function Product({ product }) {
 
   return (
     <ProductStyled>
-      <Image src="../imgs/christmas-tree.jpg" />
+      <Link to={`${id}`}>
+        <Image src="../imgs/christmas-tree.jpg" />
+      </Link>
       <Info>
         <Title>{title}</Title>
         <Type>{type}</Type>

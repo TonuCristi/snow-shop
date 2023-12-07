@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ProductsPageStyled = styled.div`
+export const ProductsPageStyled = styled.main`
   width: 75%;
   margin: 0 auto;
   display: grid;
