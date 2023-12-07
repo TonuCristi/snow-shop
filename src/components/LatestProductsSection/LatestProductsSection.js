@@ -11,25 +11,25 @@ import Loader from "../Loader/Loader";
 import Error from "../ErrorMessage/Error";
 
 export default function LatestProductsSection() {
-  const { data, status } = useContext(ProductsContext);
+  const { data, isLoading, error } = useContext(ProductsContext);
+
   const dataLength = data.length;
   const latestData = data
     .slice(0, dataLength)
     .sort((a, b) => a.id - b.id)
     .slice(dataLength - 5, dataLength);
 
+  if (isLoading) return <Loader />;
+  if (error) return <Error message={error} />;
+
   return (
     <LatestProductsSectionStyled>
       <SectionTitle>Latest products</SectionTitle>
-      {status === "dataFetched" && (
-        <ProductsContainer>
-          {latestData.map((product) => (
-            <Product key={product.id} product={product} />
-          ))}
-        </ProductsContainer>
-      )}
-      {status === "fetchingData" && <Loader />}
-      {status === "errorFetching" && <Error message="Something went wrong!" />}
+      <ProductsContainer>
+        {latestData.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
+      </ProductsContainer>
     </LatestProductsSectionStyled>
   );
 }

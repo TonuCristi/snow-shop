@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProductsPageStyled = styled.div`
-  width: 70%;
+  width: 75%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 25fr 75fr;

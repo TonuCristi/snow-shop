@@ -9,11 +9,11 @@ import {
 } from "./LatestProductsSection.styled";
 
 export default function Product({ product }) {
-  const { title, price } = product;
+  const { id, title, price } = product;
 
   return (
     <ProductStyled>
-      <Link to="/contact">
+      <Link to={`/product/${id}`}>
         <Image src="../imgs/christmas-tree.jpg" />
       </Link>
       <Info>

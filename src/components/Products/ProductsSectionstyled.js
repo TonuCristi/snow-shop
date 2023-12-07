@@ -25,7 +25,14 @@ export const Info = styled.div`
 
 export const Title = styled.h3`
   font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+`;
+
+export const Type = styled.p`
+  font-size: 1.2rem;
   margin-bottom: 2.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
 `;
 
 export const Disponibility = styled.p`
@@ -39,6 +46,14 @@ export const Price = styled.p`
   font-size: 2rem;
   font-weight: 700;
   color: #fa5252;
+  border-radius: 1.3rem;
+  margin-bottom: 1.2rem;
+`;
+
+export const Promotion = styled.span`
+  font-size: 1rem;
+  font-weight: 700;
+  color: #40c057;
   border-radius: 1.3rem;
   margin-bottom: 1.2rem;
 `;

@@ -10,7 +10,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  width: 50%;
+  width: 55%;
   font-size: 1.6rem;
   font-weight: 700;
 `;

@@ -1,18 +1,11 @@
 import Sort from "./Sort";
-import { FiltersStyled } from "./Filters.styled";
 import RemoveFilterBtn from "./RemoveFiltersBtn";
 import Filter from "./Filter";
+import Disponibility from "./Disponibility";
+import Price from "./Price";
+import { FiltersStyled } from "./Filters.styled";
 
-const filters = [
-  {
-    title: "disponibility",
-    data: [
-      { inStock: "In stock" },
-      { promotion: "Promotion" },
-      { resealed: "Resealed" },
-      { noStock: "No stock" },
-    ],
-  },
+export const filters = [
   {
     title: "category",
     data: [
@@ -22,24 +15,29 @@ const filters = [
       { lights: "Lights" },
     ],
   },
-  {
-    title: "price",
-    data: [
-      { under100: "Under 100" },
-      { from100To200: "100 - 200" },
-      { from200To300: "200 - 300" },
-      { from300To400: "300 - 400" },
-      { from400To500: "400 - 500" },
-      { over500: "Over 500" },
-    ],
-  },
 ];
+
+export const disponibility = {
+  title: "disponibility",
+  data: [
+    { stock: "In stock" },
+    { promotion: "Promotion" },
+    { resealed: "Resealed" },
+  ],
+};
+
+export const price = {
+  title: "price",
+  data: ["0-100", "100-200", "200-300", "300-400", "400-500", "500-1000"],
+};
 
 export default function Filters() {
   return (
     <FiltersStyled>
       <RemoveFilterBtn />
       <Sort />
+      <Disponibility disponibility={disponibility} />
+      <Price price={price} />
       {filters.map(({ title, data }) => (
         <Filter key={title} title={title} data={data} />
       ))}
